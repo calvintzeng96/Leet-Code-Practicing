@@ -4,11 +4,72 @@
 // Return a list of the target indices of nums after sorting nums in non-decreasing order. If there are no target indices, return an empty list. The returned list must be sorted in increasing order.
 
 var targetIndices = function(nums, target) {
+    let sorted = nums.sort((a, b) => a - b)
 
+    let low = 0
+    let high = sorted.length - 1
+    let targetResult;
+    while (low <= high) {
+        let mid = Math.floor((low + high) / 2)
+        if (sorted[mid] === target) {
+            targetResult = mid
+            break
+        }
+        if (target > sorted[mid]) {
+            low = mid + 1
+        }
+        if (target < sorted[mid]) {
+            high = mid - 1
+        }
+    }
+
+    let upperIndex;
+    let lowerIndex;
+    let low2 = targetResult
+    let high2 = targetResult
+    //up
+    while (low2 <= high) {
+        let mid = Math.floor((low2 + high) / 2)
+
+        if (sorted[mid] !== target) {
+            high = mid - 1
+        }
+        if (sorted[mid] === target) {
+            if (sorted[mid + 1] !== target) {
+                upperIndex = mid
+                break
+            }
+            low2 = mid + 1
+        }
+    }
+    //down
+    while (low <= high2) {
+        let mid = Math.floor((low + high2) / 2)
+
+        if (sorted[mid] !== target) {
+            low = mid + 1
+        }
+        if (sorted[mid] === target) {
+            if (sorted[mid - 1] !== target) {
+                lowerIndex = mid
+                break
+            }
+            high2 = mid - 1
+        }
+    }
+    let answer = []
+    for (let i = lowerIndex; i <= upperIndex; i++) {
+        answer.push(i)
+    }
+    return answer
 };
 
-
-
+// let input1 = [1,2,5,2,3]
+// let target1 = 2
+// let input2 = [1,2,5,2,3]
+// let target2 = 3
+// console.log(targetIndices(input1, target1)) //[1,2]
+// console.log(targetIndices(input2, target2)) //[3]
 
 
 // Example 1:
