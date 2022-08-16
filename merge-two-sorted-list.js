@@ -8,6 +8,13 @@ var mergeTwoLists = function(list1, list2) {
 
 };
 
+let list1 = [1,2,4]
+let list2 =[1,3,4]
+console.log(mergeTwoLists(list1, list2)) //[1,1,2,3,4,4]
+let list3 = []
+let list4 = []
+console.log(mergeTwoLists(list3, list4)) //[]
+
 
 // Example 1:
 // Input: list1 = [1,2,4], list2 = [1,3,4]
