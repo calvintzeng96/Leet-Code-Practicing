@@ -20,13 +20,23 @@
 // If all assertions pass, then your solution will be accepted.
 
 var removeDuplicates = function(nums) {
-
+    let answer = [...nums];
+    let index = 0;
+    let tracked = new Set()
+    for (let i = 0; i < nums.length; i++) {
+        if (!tracked.has(nums[i])) {
+            tracked.add(nums[i]);
+            answer[index] = nums[i]
+            index++
+        }
+    }
+    return answer
 };
 
-// let input1 = [1,1,2]
-// let input2 = [0,0,1,1,1,2,2,3,3,4]
-// console.log(removeDuplicates(input1)) //[1,2,_]
-// console.log(removeDuplicates(input2)) //[0,1,2,3,4,_,_,_,_,_]
+let input1 = [1,1,2]
+let input2 = [0,0,1,1,1,2,2,3,3,4]
+console.log(removeDuplicates(input1)) //[1,2,_]
+console.log(removeDuplicates(input2)) //[0,1,2,3,4,_,_,_,_,_]
 
 // Example 1:
 // Input: nums = [1,1,2]
