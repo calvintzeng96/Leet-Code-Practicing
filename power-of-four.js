@@ -16,10 +16,10 @@ var isPowerOfFour = function(n) {
     return isPowerOfFour((n / 4))
 };
 
-let input1 = 16
-let input2 = 5
-console.log(isPowerOfFour(input1)) //true
-console.log(isPowerOfFour(input2)) //false
+// let input1 = 16
+// let input2 = 5
+// console.log(isPowerOfFour(input1)) //true
+// console.log(isPowerOfFour(input2)) //false
 
 // Example 1:
 // Input: n = 16
