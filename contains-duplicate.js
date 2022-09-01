@@ -22,7 +22,6 @@ var containsDuplicate = function(nums) {
         set.add(nums[i])
     }
     return false
-
 };
 
 let input1 = [1,2,3,1]

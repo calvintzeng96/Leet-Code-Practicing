@@ -4,8 +4,42 @@
 // An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
 var isAnagram = function(s, t) {
+    // return s.split("").sort().join("") == t.split("").sort().join("")
 
+    if (s.length !== t.length) return false
+    let obj = {}
+    for (let i = 0; i < s.length; i++) {
+        current = s[i]
+        if (obj[current]) {
+            obj[current] = obj[current] + 1
+        } else {
+            obj[current] = 1
+        }
+    }
+
+    for (let i = 0; i < t.length; i++) {
+        current = t[i]
+        if (obj[current]) {
+            obj[current] = obj[current] - 1
+        } else {
+            return false
+        }
+    }
+
+    for (let key in obj) {
+        if (obj[key] !== 0) {
+            return false
+        }
+    }
+    return true
 };
+
+let input1 = "anagram"
+let input2 = "nagaram"
+let input3 = "rat"
+let input4 = "car"
+console.log(isAnagram(input1, input2)) //true
+console.log(isAnagram(input3, input4)) //false
 
 // Example 1:
 // Input: s = "anagram", t = "nagaram"
