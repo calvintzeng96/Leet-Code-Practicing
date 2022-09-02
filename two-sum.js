@@ -5,18 +5,39 @@
 // You can return the answer in any order.
 
 var twoSum = function(nums, target) {
+    // for (let i = 0; i < nums.length; i++) {
+    //     for (let j = i + 1; j < nums.length; j++) {
+    //         if (nums[i] + nums[j] === target) {
+    //             return [i, j]
+    //         }
+    //     }
+    // }
+
+    let obj = {}
     for (let i = 0; i < nums.length; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
-            if (nums[i] + nums[j] === target) {
-                return [i, j]
-            }
+        if (obj[nums[i]]) {
+            obj[nums[i]].push(i)
+            return obj[nums[i]]
+        } else {
+            obj[target - nums[i]] = [i]
         }
     }
+
+
+    // let obj = {}
+    // for (let i = 0; i < nums.length; i++) {
+    //     let test = target - nums[i]
+    //     if (obj[test]) {
+    //         return [i].concat(obj[test])
+    //     } else {
+    //         obj[nums[i]] = [i]
+    //     }
+    // }
 };
 
-// let nums = [2,7,11,15]
-// let target = 9
-// console.log(twoSum(nums, target))
+let nums = [2,7,11,15]
+let target = 9
+console.log(twoSum(nums, target))
 
 // Example 1:
 // Input: nums = [2,7,11,15], target = 9
