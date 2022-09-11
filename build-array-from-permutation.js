@@ -3,25 +3,46 @@
 // A zero-based permutation nums is an array of distinct integers from 0 to nums.length - 1 (inclusive).
 
 
-var buildArray = function(nums) {
-    // let answer = []
+// var buildArray = function(nums) {
+//     // let answer = []
 
-    // for (let i = 0; i < nums.length; i++) {
-    //     answer[i] = nums[nums[i]]
-    // }
-    // return answer
+//     // for (let i = 0; i < nums.length; i++) {
+//     //     answer[i] = nums[nums[i]]
+//     // }
+//     // return answer
 
-    // return nums.map(ele => nums[ele])
+//     // return nums.map(ele => nums[ele])
+//     let tracker = nums.length - 1
+//     let jumper = 0
+//     while (tracker != -1) {
+//         nums[nums.length - tracker - 1] = nums[jumper]
+//         jumper = nums[nums.length - tracker - 1]
 
+//         tracker--
+//     }
+//     return nums
+// };
 
-};
-
-
+let buildArray = function(nums) {
+    for (let i=0 ; i<nums.length ; i++){
+    let e=nums[i]
+    if (typeof(e)==='string') e = e.substring(0, e.indexOf('/'));
+    let bigE=(nums[e]);
+    if (typeof(bigE)==='string') bigE = bigE.substring(0, bigE.indexOf('/'));
+    nums[i]=(''+e)+'/'+bigE;
+    }
+    for (let i=0 ; i<nums.length ; i++){
+    let test1= nums[i] ;
+    let test2 = test1.substr(test1.indexOf('/') + 1);
+    nums[i]=+test2;
+    }
+    return nums
+    }
 
 
 
 let input1 = [0,2,1,5,3,4]
-let input2 = [5,0,1,2,3,4]
+let input2 = [5,0,1,2,3,4] //[4,5,0,1,2,3]
 console.log(buildArray(input1)) //[0,1,2,4,5,3]
 console.log(buildArray(input2)) //[4,5,0,1,2,3]
 
