@@ -30,7 +30,10 @@
                 if (ver[j][num - 1]) return false
                 ver[j][num - 1] = 1
 
-
+                //"boxNumber" variable, classifies each box as 3x3 sections
+                let boxNumber = Math.floor(i / 3) * 3 + Math.floor(j / 3)
+                if (box[boxNumber][num - 1]) return false
+                box[boxNumber][num - 1] = 1
 
 
 
