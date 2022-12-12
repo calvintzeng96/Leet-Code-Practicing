@@ -8,10 +8,14 @@
 // Fahrenheit = Celsius * 1.80 + 32.00
 
 var convertTemperature = function(celsius) {
-
+    return [celsius + 273.15, celsius * 1.8 + 32]
 };
 
 
+let input1 = 36.50
+let input2 = 122.11
+console.log(convertTemperature(input1))//[309.65000,97.70000]
+console.log(convertTemperature(input2))//[395.26000,251.79800]
 
 
 // Example 1:
